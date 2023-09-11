@@ -1,12 +1,14 @@
 {
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "tailwindcss"],
   "extends": [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "prettier",
+    "plugin:tailwindcss/recommended"
   ],
   "rules": {
     "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-explicit-any": "error"
+    "@typescript-eslint/no-explicit-any": "error",
+    "tailwindcss/classnames-order": "off" // Respect prettier-plugin-tailwindcss order
   }
 }

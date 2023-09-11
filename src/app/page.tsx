@@ -59,39 +59,37 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col h-full p-6 bg-orange-50 items-center justify-center">
-      <div className="flex flex-col items-center mt-auto gap-6">
+    <div className="flex h-full flex-col items-center justify-center bg-orange-50 p-6">
+      <div className="mt-auto flex flex-col items-center gap-6">
         <motion.div
-          className="flex items-center overflow-hidden text-9xl leading-tight"
+          className="flex flex-wrap items-center justify-center overflow-hidden text-6xl md:text-9xl md:leading-tight"
           variants={nameContainer}
           initial="hidden"
           animate="visible"
         >
           {myNameWords.map((word, index) => (
             <motion.span
-              className="text-orange-900"
+              className="mr-4 text-orange-900"
               variants={nameChild}
-              style={{ marginRight: "2rem" }}
               key={index}
             >
               {word}
             </motion.span>
           ))}
         </motion.div>
-        <div className="flex text-orange-900 text-xl">
+        <motion.div
+          className="flex min-h-[3.5rem] flex-wrap justify-center text-xl text-orange-900"
+          variants={sloganContainer}
+          initial="hidden"
+          animate="visible"
+        >
+          {mySolganChars.map((char, index) => (
+            <motion.span variants={sloganChild} key={index}>
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
           <motion.div
             className="flex"
-            variants={sloganContainer}
-            initial="hidden"
-            animate="visible"
-          >
-            {mySolganChars.map((char, index) => (
-              <motion.span variants={sloganChild} key={index}>
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
-          </motion.div>
-          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
@@ -103,19 +101,19 @@ export default function Home() {
           >
             |
           </motion.div>
-        </div>
+        </motion.div>
       </div>
       <motion.div
-        className="flex mt-auto"
+        className="mt-auto flex"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.05 * mySolganChars.length + 1 }}
       >
         <motion.div
-          className="w-0 h-0 
-          border-l-[20px] border-l-transparent
-          border-t-[30px] border-t-yellow-800
-          border-r-[20px] border-r-transparent"
+          className="h-0
+          w-0 border-l-[20px]
+          border-r-[20px] border-t-[30px]
+          border-l-transparent border-r-transparent border-t-yellow-800"
           animate={{
             y: [-10, 0, -10],
           }}
